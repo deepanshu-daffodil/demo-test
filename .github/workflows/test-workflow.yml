@@ -20,13 +20,22 @@ jobs:
     steps: 
       - name: Running Commands
         run: |
+          echo "get all variables"
+          set
+          echo "--------------------"
           echo "Print var"
+          echo "running set"
           set myvar=%pwd%
           set var=%cd%
+          echo "running setx"
           setx myvar "%pwd%"
           setx var "%cd%"
+          echo "print by %%"
           echo %var%
           echo %myvar%
+          echo "print by $"
+          echo $var
+          echo $myvar
           echo "-----printed var------"
           echo "Lets run pwd command"
           echo "-------------------"
