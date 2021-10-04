@@ -20,9 +20,14 @@ jobs:
     steps: 
       - name: Running Commands
         run: |
-          echo "Print PATH"
-          echo %PATH%
-          echo "-----printed path------"
+          echo "Print var"
+          set myvar=%pwd%
+          set var=%cd%
+          setx myvar "%pwd%"
+          setx var "%cd%"
+          echo %var%
+          echo %myvar%
+          echo "-----printed var------"
           echo "Lets run pwd command"
           echo "-------------------"
           pwd
