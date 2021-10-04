@@ -20,9 +20,7 @@ jobs:
     steps: 
       - name: Running Commands
         run: |
-          echo "get all variables"
-          set
-          echo "--------------------"
+          
           echo "Print var"
           echo "running set"
           set myvar=%pwd%
