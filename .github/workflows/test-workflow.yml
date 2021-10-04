@@ -20,6 +20,9 @@ jobs:
     steps: 
       - name: Running Commands
         run: |
+          echo "Print PATH"
+          echo %PATH%
+          echo "-----printed path------"
           echo "Lets run pwd command"
           echo "-------------------"
           pwd
