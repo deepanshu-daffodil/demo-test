@@ -17,55 +17,9 @@ on:
 jobs:
   test_1:
     runs-on: windows-latest
-    steps: 
-      - name: Running Commands
-        run: |
-          
-          echo "Print var"
-          echo "running set"
-          set myvar=%pwd%
-          set var=%cd%
-          echo "running setx"
-          setx myvar "%pwd%"
-          setx var "%cd%"
-          echo "print by %%"
-          echo %var%
-          echo %myvar%
-          echo "print by $"
-          echo $var
-          echo $myvar
-          echo "-----printed var------"
-          echo "Lets run pwd command"
-          echo "-------------------"
-          pwd
-          echo "-------------------"
-          echo "pwd done"
-          echo "-------------------"
-          echo "store in var"
-          set my_var = %pwd%
-          echo "print my_var"
-          echo %my_var%
-          echo "-------------------"
-          echo "print my_var out"
-          echo "-------------------"
-          echo "Lets run cd / command"
-          echo "-------------------"
-          cd /
-          echo "-------------------"
-          echo "cd / done"
-          echo "Lets run pwd command again"
-          echo "-------------------"
-          pwd
-          echo "-------------------"
-          echo "pwd done"
-          echo "-------------------"
-          echo "store in var"
-          set my_var = %pwd%
-          echo "print my_var"
-          echo %my_var%
-          echo "-------------------"
-          echo "print my_var out"
-        
+    steps:
+    - uses: browser-actions/setup-chrome@latest
+    - run: chrome --version    
 #   job_1:
 #     name: Add 3 and 7
 #     runs-on: ubuntu-latest
