@@ -20,17 +20,21 @@ jobs:
     steps: 
       - name: Running Commands
         run: |
-          echo "Lets run cd command"
-          echo "-------------------"
-          cd
           echo "Lets run pwd command"
           echo "-------------------"
           pwd
+          echo "-------------------"
+          echo "pwd done"
           echo "Lets run cd / command"
           echo "-------------------"
           cd /
           echo "-------------------"
-        
+          echo "cd / done"
+          echo "Lets run pwd command again"
+          echo "-------------------"
+          pwd
+          echo "-------------------"
+          echo "pwd done"
         
 #   job_1:
 #     name: Add 3 and 7
