@@ -21,11 +21,15 @@ jobs:
       - name: Running Commands
         run: |
           echo "Lets run cd command"
+          echo "-------------------"
           cd
           echo "Lets run pwd command"
+          echo "-------------------"
           pwd
           echo "Lets run cd / command"
+          echo "-------------------"
           cd /
+          echo "-------------------"
         
         
 #   job_1:
