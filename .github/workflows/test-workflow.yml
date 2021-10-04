@@ -5,8 +5,8 @@ name: Share data between jobs
 # Controls when the workflow will run
 on:
   # Triggers the workflow on push or pull request events but only for the main branch
-#  push:
-#    branches: [main]
+ push:
+   branches: [main]
 #  pull_request:
 #    branches: [ main ]
 
@@ -25,6 +25,14 @@ jobs:
           pwd
           echo "-------------------"
           echo "pwd done"
+          echo "-------------------"
+          echo "store in var"
+          set my_var = %pwd%
+          echo "print my_var"
+          echo %my_var%
+          echo "-------------------"
+          echo "print my_var out"
+          echo "-------------------"
           echo "Lets run cd / command"
           echo "-------------------"
           cd /
@@ -35,6 +43,13 @@ jobs:
           pwd
           echo "-------------------"
           echo "pwd done"
+          echo "-------------------"
+          echo "store in var"
+          set my_var = %pwd%
+          echo "print my_var"
+          echo %my_var%
+          echo "-------------------"
+          echo "print my_var out"
         
 #   job_1:
 #     name: Add 3 and 7
