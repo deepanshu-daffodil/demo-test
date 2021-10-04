@@ -5,9 +5,8 @@ name: Share data between jobs
 # Controls when the workflow will run
 on:
   # Triggers the workflow on push or pull request events but only for the main branch
- push:
-   branches:
-   - test1
+#  push:
+#    branches: [main]
 #  pull_request:
 #    branches: [ main ]
 
@@ -16,49 +15,62 @@ on:
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  job_1:
-    name: Add 3 and 7
-    runs-on: ubuntu-latest
-    steps:
-      - shell: bash
+  test_1:
+    runs-on: windows-latest
+    steps: 
+      - name: Running Commands
         run: |
-          expr 3 + 7 > math-homework.txt
-      - name: Upload math result for job 1
-        uses: actions/upload-artifact@v2
-        with:
-          name: homework
-          path: math-homework.txt
+          echo "Lets run cd command"
+          cd
+          echo "Lets run pwd command"
+          pwd
+          echo "Lets run cd / command"
+          cd /
+        
+        
+#   job_1:
+#     name: Add 3 and 7
+#     runs-on: ubuntu-latest
+#     steps:
+#       - shell: bash
+#         run: |
+#           expr 3 + 7 > math-homework.txt
+#       - name: Upload math result for job 1
+#         uses: actions/upload-artifact@v2
+#         with:
+#           name: homework
+#           path: math-homework.txt
 
-  job_2:
-    name: Multiply by 9
-    needs: job_1
-    runs-on: ubuntu-latest
-    steps:
-      - name: Download math result for job 1
-        uses: actions/download-artifact@v2
-        with:
-          name: homework
-      - shell: bash
-        run: |
-          value=`cat math-homework.txt`
-          expr $value \* 9 > math-homework.txt
-      - name: Upload math result for job 2
-        uses: actions/upload-artifact@v2
-        with:
-          name: homework
-          path: math-homework.txt
+#   job_2:
+#     name: Multiply by 9
+#     needs: job_1
+#     runs-on: ubuntu-latest
+#     steps:
+#       - name: Download math result for job 1
+#         uses: actions/download-artifact@v2
+#         with:
+#           name: homework
+#       - shell: bash
+#         run: |
+#           value=`cat math-homework.txt`
+#           expr $value \* 9 > math-homework.txt
+#       - name: Upload math result for job 2
+#         uses: actions/upload-artifact@v2
+#         with:
+#           name: homework
+#           path: math-homework.txt
 
-  job_3:
-    name: Display results
-    needs: job_2
-    runs-on: ubuntu-latest
-    steps:
-      - name: Download math result for job 2
-        uses: actions/download-artifact@v2
-        with:
-          name: homework
-      - name: Print the final result
-        shell: bash
-        run: |
-          value=`cat math-homework.txt`
-          echo The result is $value
+#   job_3:
+#     name: Display results
+#     needs: job_2
+#     runs-on: ubuntu-latest
+#     steps:
+#       - name: Download math result for job 2
+#         uses: actions/download-artifact@v2
+#         with:
+#           name: homework
+#       - name: Print the final result
+#         shell: bash
+#         run: |
+#           value=`cat math-homework.txt`
+#           echo The result is $value
