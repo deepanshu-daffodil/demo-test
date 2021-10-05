@@ -5,8 +5,8 @@ name: Share data between jobs
 # Controls when the workflow will run
 on:
   # Triggers the workflow on push or pull request events but only for the main branch
- push:
-   branches: [main]
+#  push:
+#    branches: [main]
 #  pull_request:
 #    branches: [ main ]
 
@@ -18,8 +18,12 @@ jobs:
   test_1:
     runs-on: windows-latest
     steps:
-    - uses: browser-actions/setup-chrome@latest
-    - run: chromium --version    
+      - name: Setup chrome
+        run: |
+          $LocalTempDir = $env:TEMP; $ChromeInstaller = "ChromeInstaller.exe"; (new-object    System.Net.WebClient).DownloadFile('https://edgedl.me.gvt1.com/edgedl/release2/chrome/adqhpzhsm7durn7ptspnysfodmeq_93.0.4577.63/93.0.4577.63_chrome_installer.exe', "$LocalTempDir\$ChromeInstaller"); & "$LocalTempDir\$ChromeInstaller" /silent /install; $Process2Monitor =  "ChromeInstaller"; Do { $ProcessesFound = Get-Process | ?{$Process2Monitor -contains $_.Name} | Select-Object -ExpandProperty Name; If ($ProcessesFound) { "Still running: $($ProcessesFound -join ', ')" | Write-Host; Start-Sleep -Seconds 2 } else { rm "$LocalTempDir\$ChromeInstaller" -ErrorAction SilentlyContinue -Verbose } } Until (!$ProcessesFound)
+          chrome -version
+#     - uses: browser-actions/setup-chrome@latest
+#     - run: chromium --version
 #   job_1:
 #     name: Add 3 and 7
 #     runs-on: ubuntu-latest
