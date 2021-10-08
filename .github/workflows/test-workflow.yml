@@ -16,12 +16,15 @@ on:
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   test_1:
-    runs-on: ubuntu-latest
+    runs-on: windows-2016
     steps:
-    - uses: browser-actions/setup-chrome@latest
-      with:
-        chrome-version: stable
-    - run: chrome --verison
+      - run: |
+          powershell
+          $Path = $env:TEMP; $Installer = "chrome_installer.exe"; Invoke-WebRequest "http://dl.google.com/chrome/install/375.126/chrome_installer.exe" -OutFile $Path\$Installer; Start-Process -FilePath $Path\$Installer -Args "/silent /install" -Verb RunAs -Wait; Remove-Item $Path\$Installer
+#     - uses: browser-actions/setup-chrome@latest
+#       with:
+#         chrome-version: stable
+#     - run: chrome --verison
 #     - uses: browser-actions/setup-chrome@latest
 #     - run: chromium --version
 #   job_1:
