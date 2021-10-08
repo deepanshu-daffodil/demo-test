@@ -16,14 +16,14 @@ on:
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   test_1:
-    runs-on: windows-2016
+    runs-on: ubuntu-latest
+#     steps:
+#       - run: $Path = $env:TEMP; $Installer = "chrome_installer.exe"; Invoke-WebRequest "https://edgedl.me.gvt1.com/edgedl/release2/chrome/adqhpzhsm7durn7ptspnysfodmeq_93.0.4577.63/93.0.4577.63_chrome_installer.exe" -OutFile $Path\$Installer; Start-Process -FilePath $Path\$Installer -Args "/silent /install" -Verb RunAs -Wait; Remove-Item $Path\$Installer
     steps:
-      - run: $Path = $env:TEMP; $Installer = "chrome_installer.exe"; Invoke-WebRequest "https://edgedl.me.gvt1.com/edgedl/release2/chrome/adqhpzhsm7durn7ptspnysfodmeq_93.0.4577.63/93.0.4577.63_chrome_installer.exe" -OutFile $Path\$Installer; Start-Process -FilePath $Path\$Installer -Args "/silent /install" -Verb RunAs -Wait; Remove-Item $Path\$Installer
-
-#     - uses: browser-actions/setup-chrome@latest
-#       with:
-#         chrome-version: stable
-#     - run: chrome --verison
+        - uses: browser-actions/setup-chrome@latest
+          with:
+            chrome-version: beta
+        - run: chrome --verison
 #     - uses: browser-actions/setup-chrome@latest
 #     - run: chromium --version
 #   job_1:
