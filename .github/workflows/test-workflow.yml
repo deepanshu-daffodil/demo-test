@@ -5,8 +5,8 @@ name: Share data between jobs
 # Controls when the workflow will run
 on:
   # Triggers the workflow on push or pull request events but only for the main branch
-#  push:
-#    branches: [main]
+ push:
+   branches: [main]
 #  pull_request:
 #    branches: [ main ]
 
@@ -18,8 +18,10 @@ jobs:
   test_1:
     runs-on: ubuntu-latest
     steps:
-      - uses: browser-actions/setup-chrome@93.0
-      - run: chrome --version
+    - uses: browser-actions/setup-chrome@latest
+      with:
+        chrome-version: stable
+    - run: chrome --verison
 #     - uses: browser-actions/setup-chrome@latest
 #     - run: chromium --version
 #   job_1:
