@@ -18,7 +18,7 @@ jobs:
   test_1:
     runs-on: ubuntu-latest
     steps:
-      - uses: browser-actions/setup-chrome@latest
+      - uses: browser-actions/setup-chrome@93
       - run: chrome --version
 #     - uses: browser-actions/setup-chrome@latest
 #     - run: chromium --version
