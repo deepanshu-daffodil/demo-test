@@ -15,58 +15,57 @@ on:
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  test_1:
-    runs-on: ubuntu-latest
+#   test_1:
+#     runs-on: ubuntu-latest
 #     steps:
-#       - run: $Path = $env:TEMP; $Installer = "chrome_installer.exe"; Invoke-WebRequest "https://edgedl.me.gvt1.com/edgedl/release2/chrome/adqhpzhsm7durn7ptspnysfodmeq_93.0.4577.63/93.0.4577.63_chrome_installer.exe" -OutFile $Path\$Installer; Start-Process -FilePath $Path\$Installer -Args "/silent /install" -Verb RunAs -Wait; Remove-Item $Path\$Installer
 #     steps:
 #         - uses: browser-actions/setup-chrome@latest
 #           with:
 #             chrome-version: dev
 #         - run: chrome --verison
-#   job_1:
-#     name: Add 3 and 7
-#     runs-on: ubuntu-latest
-#     steps:
-#       - shell: bash
-#         run: |
-#           expr 3 + 7 > math-homework.txt
-#       - name: Upload math result for job 1
-#         uses: actions/upload-artifact@v2
-#         with:
-#           name: homework
-#           path: math-homework.txt
+  job_1:
+    name: Add 3 and 7
+    runs-on: ubuntu-latest
+    steps:
+      - shell: bash
+        run: |
+          expr 3 + 7 > math-homework.txt
+      - name: Upload math result for job 1
+        uses: actions/upload-artifact@v2
+        with:
+          name: homework
+          path: math-homework.txt
 
-#   job_2:
-#     name: Multiply by 9
-#     needs: job_1
-#     runs-on: ubuntu-latest
-#     steps:
-#       - name: Download math result for job 1
-#         uses: actions/download-artifact@v2
-#         with:
-#           name: homework
-#       - shell: bash
-#         run: |
-#           value=`cat math-homework.txt`
-#           expr $value \* 9 > math-homework.txt
-#       - name: Upload math result for job 2
-#         uses: actions/upload-artifact@v2
-#         with:
-#           name: homework
-#           path: math-homework.txt
+  job_2:
+    name: Multiply by 9
+    needs: job_1
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download math result for job 1
+        uses: actions/download-artifact@v2
+        with:
+          name: homework
+      - shell: bash
+        run: |
+          value=`cat math-homework.txt`
+          expr $value \* 9 > math-homework.txt
+      - name: Upload math result for job 2
+        uses: actions/upload-artifact@v2
+        with:
+          name: homework
+          path: math-homework.txt
 
-#   job_3:
-#     name: Display results
-#     needs: job_2
-#     runs-on: ubuntu-latest
-#     steps:
-#       - name: Download math result for job 2
-#         uses: actions/download-artifact@v2
-#         with:
-#           name: homework
-#       - name: Print the final result
-#         shell: bash
-#         run: |
-#           value=`cat math-homework.txt`
-#           echo The result is $value
+  job_3:
+    name: Display results
+    needs: job_2
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download math result for job 2
+        uses: actions/download-artifact@v2
+        with:
+          name: homework
+      - name: Print the final result
+        shell: bash
+        run: |
+          value=`cat math-homework.txt`
+          echo The result is $value
