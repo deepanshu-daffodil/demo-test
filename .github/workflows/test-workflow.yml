@@ -5,8 +5,8 @@ name: Share data between jobs
 # Controls when the workflow will run
 on:
   # Triggers the workflow on push or pull request events but only for the main branch
- push:
-   branches: [main]
+#  push:
+#    branches: [main]
 #  pull_request:
 #    branches: [ main ]
 
@@ -19,13 +19,11 @@ jobs:
     runs-on: ubuntu-latest
 #     steps:
 #       - run: $Path = $env:TEMP; $Installer = "chrome_installer.exe"; Invoke-WebRequest "https://edgedl.me.gvt1.com/edgedl/release2/chrome/adqhpzhsm7durn7ptspnysfodmeq_93.0.4577.63/93.0.4577.63_chrome_installer.exe" -OutFile $Path\$Installer; Start-Process -FilePath $Path\$Installer -Args "/silent /install" -Verb RunAs -Wait; Remove-Item $Path\$Installer
-    steps:
-        - uses: browser-actions/setup-chrome@latest
-          with:
-            chrome-version: dev
-        - run: chrome --verison
-#     - uses: browser-actions/setup-chrome@latest
-#     - run: chromium --version
+#     steps:
+#         - uses: browser-actions/setup-chrome@latest
+#           with:
+#             chrome-version: dev
+#         - run: chrome --verison
 #   job_1:
 #     name: Add 3 and 7
 #     runs-on: ubuntu-latest
