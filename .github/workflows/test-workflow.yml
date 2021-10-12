@@ -26,28 +26,28 @@ jobs:
     runs-on: windows-2016
     steps:
       - run: |
-          echo "root contains"
+          echo "1. root contains"
           ls
           mkdir myfolder
           touch myfolder/a.txt
           touch myfolder/b.txt
           touch myfolder/c.txt
-          echo "root contains"
+          echo "2. root contains"
           ls
-          echo "my folder contains"
+          echo "3. my folder contains"
           ls myfolder/
-          echo "removing"
-          rmdir myfolder
-          echo "root contains"
+          echo "4. removing just rmdir"
+          rmdir myfolder/
+          echo "5. root contains"
           ls
-          echo "my folder contains"
+          echo "6. my folder contains"
           ls myfolder/
-          echo "Now"
-          echo "rmdir /s /q"
-          rmdir myfolder /s /q
-          echo "root contains"
+          echo "7. Now"
+          echo "8. rmdir /s /q"
+          rmdir myfolder/ /s /q
+          echo "9. root contains"
           ls
-          echo "my folder contains"
+          echo "10. my folder contains"
           ls myfolder/
           
 #   job_1:
