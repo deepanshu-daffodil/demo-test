@@ -18,54 +18,81 @@ jobs:
 #   test_1:
 #     runs-on: ubuntu-latest
 #     steps:
-#     steps:
 #         - uses: browser-actions/setup-chrome@latest
 #           with:
 #             chrome-version: dev
 #         - run: chrome --verison
-  job_1:
-    name: Add 3 and 7
-    runs-on: ubuntu-latest
+  test_2:
+    runs-on: windows-2016
     steps:
-      - shell: bash
-        run: |
-          expr 3 + 7 > math-homework.txt
-      - name: Upload math result for job 1
-        uses: actions/upload-artifact@v2
-        with:
-          name: homework
-          path: math-homework.txt
+      - run: |
+          echo "root contains"
+          ls
+          mkdir myfolder
+          touch myfolder/a.txt
+          touch myfolder/b.txt
+          touch myfolder/c.txt
+          echo "root contains"
+          ls
+          echo "my folder contains"
+          ls myfolder/
+          echo "removing"
+          rmdir myfolder
+          echo "root contains"
+          ls
+          echo "my folder contains"
+          ls myfolder/
+          echo "Now"
+          echo "rmdir /s /q"
+          rmdir myfolder /s /q
+          echo "root contains"
+          ls
+          echo "my folder contains"
+          ls myfolder/
+          
+#   job_1:
+#     name: Add 3 and 7
+#     runs-on: ubuntu-latest
+#     steps:
+#       - shell: bash
+#         run: |
+#           expr 3 + 7 > math-homework.txt
+#       - name: Upload math result for job 1
+#         uses: actions/upload-artifact@v2
+#         with:
+#           name: homework
+#           path: math-homework.txt
 
-  job_2:
-    name: Multiply by 9
-    needs: job_1
-    runs-on: ubuntu-latest
-    steps:
-      - name: Download math result for job 1
-        uses: actions/download-artifact@v2
-        with:
-          name: homework
-      - shell: bash
-        run: |
-          value=`cat math-homework.txt`
-          expr $value \* 9 > math-homework.txt
-      - name: Upload math result for job 2
-        uses: actions/upload-artifact@v2
-        with:
-          name: homework
-          path: math-homework.txt
+#   job_2:
+#     name: Multiply by 9
+#     needs: job_1
+#     runs-on: ubuntu-latest
+#     steps:
+#       - name: Download math result for job 1
+#         uses: actions/download-artifact@v2
+#         with:
+#           name: homework
+#       - shell: bash
+#         run: |
+#           value=`cat math-homework.txt`
+#           expr $value \* 9 > math-homework.txt
+#       - name: Upload math result for job 2
+#         uses: actions/upload-artifact@v2
+#         with:
+#           name: homework
+#           path: math-homework.txt
 
-  job_3:
-    name: Display results
-    needs: job_2
-    runs-on: ubuntu-latest
-    steps:
-      - name: Download math result for job 2
-        uses: actions/download-artifact@v2
-        with:
-          name: homework
-      - name: Print the final result
-        shell: bash
-        run: |
-          value=`cat math-homework.txt`
-          echo The result is $value
+#   job_3:
+#     name: Display results
+#     needs: job_2
+#     runs-on: ubuntu-latest
+#     steps:
+#       - name: Download math result for job 2
+#         uses: actions/download-artifact@v2
+#         with:
+#           name: homework
+#       - name: Print the final result
+#         shell: bash
+#         run: |
+#           value=`cat math-homework.txt`
+#           echo The result is $value
