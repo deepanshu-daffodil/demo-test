@@ -36,12 +36,10 @@ jobs:
           ls
           echo "3. my folder contains"
           ls myfolder/
-          echo "8. rmdir /s /q"
-          rmdir myfolder/ /s /q
+          echo "8. rm -rf "
+          rm -rf myfolder/
           echo "9. root contains"
           ls
-          echo "10. my folder contains"
-          ls myfolder/
           
 #   job_1:
 #     name: Add 3 and 7
