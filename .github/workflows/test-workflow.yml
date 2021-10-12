@@ -37,7 +37,7 @@ jobs:
           echo "3. my folder contains"
           ls myfolder/
           echo "8. rm -rf "
-          rm -rf myfolder/
+          rm -r myfolder/
           echo "9. root contains"
           ls
           
