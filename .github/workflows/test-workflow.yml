@@ -23,23 +23,18 @@ jobs:
 #             chrome-version: dev
 #         - run: chrome --verison
   test_2:
-    runs-on: windows-2016
+    runs-on: ubuntu-latest
     steps:
       - run: |
-          echo "1. root contains"
-          ls
-          mkdir myfolder
-          touch myfolder/a.txt
-          touch myfolder/b.txt
-          touch myfolder/c.txt
-          echo "2. root contains"
-          ls
-          echo "3. my folder contains"
-          ls myfolder/
-          echo "8. rm -rf "
-          rm -r myfolder/
-          echo "9. root contains"
-          ls
+          echo "------------GREP command --------------"
+          xdpyinfo | grep 'dimensions'
+          echo "------------AWK command --------------"
+          xdpyinfo | awk '/dimensions/ {print $2}'
+          echo "------------xrandr command --------------"
+          xrandr | grep '*'
+          
+
+        
           
 #   job_1:
 #     name: Add 3 and 7
