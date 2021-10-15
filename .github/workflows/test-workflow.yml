@@ -26,10 +26,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: |
-          echo "------------GREP command --------------"
-          xdpyinfo | grep 'dimensions'
-          echo "------------AWK command --------------"
-          xdpyinfo | awk '/dimensions/ {print $2}'
+          
           echo "------------xrandr command --------------"
           xrandr | grep '*'
           
