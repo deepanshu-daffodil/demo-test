@@ -25,8 +25,8 @@ jobs:
   test_2:
     runs-on: ubuntu-latest
     steps:
-      - run: |
-          
+      - shell: |
+          xdpyinfo | grep 'dimensions'
           echo "------------xrandr command --------------"
           xrandr | grep '*'
           
