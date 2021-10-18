@@ -25,10 +25,11 @@ jobs:
   test_2:
     runs-on: ubuntu-latest
     steps:
-      - run: echo "runnning"
-      - shell: |
+      - name: "Test window size"
+        shell: bash
+        run: |
           xdpyinfo | grep 'dimensions'
-          echo "------------xrandr command --------------"
+          xdpyinfo | awk '/dimensions/ {print $2}'
           xrandr | grep '*'
           
 
