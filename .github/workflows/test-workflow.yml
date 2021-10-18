@@ -28,8 +28,6 @@ jobs:
       - name: "Test window size"
         shell: bash
         run: |
-          xdpyinfo | grep 'dimensions'
-          xdpyinfo | awk '/dimensions/ {print $2}'
           xrandr | grep '*'
           
 
