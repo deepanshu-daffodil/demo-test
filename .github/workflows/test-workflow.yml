@@ -25,10 +25,35 @@ jobs:
   test_2:
     runs-on: ubuntu-latest
     steps:
-      - name: "Test window size"
+      - name: "Test upload to artifact"
         shell: bash
         run: |
-          xrandr | grep '*'
+          ls
+          mkdir dir1 dir2 dir3
+          ls
+          touch dir1/a.txt dir1/b.txt dir1/c.txt
+          ls dir1
+          touch dir2/m.txt dir2/n.txt dir2/o.txt
+          ls dir2
+          touch dir3/x.txt dir3/y.txt dir3/z.txt
+          ls dir3
+
+      - name: "Upload 3 dirs"
+        uses: actions/upload-artifact@v2
+        with:
+          name: 3dir
+          path: |
+            dir1/
+            dir2/
+            dir3/      
+      - name: "Upload 1 dirs"
+        uses: actions/upload-artifact@v2
+        with:
+          name: 1dir
+          path: |
+            dir1/*
+            dir2/*
+            dir3/*
           
 
         
