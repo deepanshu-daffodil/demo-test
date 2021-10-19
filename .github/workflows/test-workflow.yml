@@ -29,7 +29,7 @@ jobs:
         shell: bash
         run: |
           ls
-          rm -r test/
+          rm -r test/ | true
           mkdir test/
           ls
           touch test/a.txt
