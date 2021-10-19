@@ -29,11 +29,11 @@ jobs:
         shell: bash
         run: |
           ls
-          rm -r test/ | true
+          find . -type d -name 'test' -exec rm -r {} +
           echo "print after rm when not present"
           mkdir test/
           ls
-          rm -r test/ | true
+          find . -type d -name 'test' -exec rm -r {} +
           echo "print after rm when present"
           ls
         
