@@ -30,11 +30,12 @@ jobs:
         run: |
           ls
           rm -r test/ | true
+          echo "print after rm when not present"
           mkdir test/
           ls
-          touch test/a.txt
-          ls test/
-          rm -r test/
+          rm -r test/ | true
+          echo "print after rm when present"
+          ls
         
           
 #   job_1:
